@@ -12,6 +12,10 @@
     box-sizing: border-box;
 }
 
+* {
+    margin: 0;
+}
+
 body {
     font-family: "Open Sans", sans-serif;
     background-color: var(--color-bg);
@@ -26,21 +30,10 @@ h2 {
     font-size: 2rem;
 }
 
-h3 {
-    font-size: 1.5rem;
-}
-
 h1,
-h2,
-h3 {
+h2 {
     font-weight: normal;
     margin: 0.5rem;
-}
-
-.seperator {
-    border: 2px #333333 solid;
-    border-left: none;
-    border-right: none;
 }
 
 .website-link {
@@ -49,16 +42,20 @@ h3 {
     display: block;
 }
 
-.subheading {
-    text-align: center;
-}
-
 /* SPECIFIC */
 
-header {
+.title {
     text-align: center;
-    border-color: #aaaaaa !important;
-    margin: 0 15vw 3rem 15vw;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url("./assets/logo.svg") no-repeat center;
+    background-size: auto 100%;
+}
+
+.title h1 {
+    font-size: 10vw;
 }
 
 a:link,
