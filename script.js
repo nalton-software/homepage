@@ -20,20 +20,21 @@ function externLink(faIcon, link) {
 //    image: url of the image next to project (string)
 // }
 function addProject(data) {
-    let extraLinksHTML = "";
+    let extraLinksHtml = "";
 
     if (data.githubLink) {
-        extraLinksHTML += externLink("github", data.githubLink);}
+        extraLinksHtml += externLink("github", data.githubLink);
+    }
 
-    const onRight = projectsContainer.childElementCount % 2 == 0;
+    const lightColor = projectsContainer.childElementCount % 2 == 0;
 
     // prettier-ignore
     const article = htmlToElement(`
-        <article class="project ${onRight ? "right" : "left"}" id="${data.id}">
+        <article class="project ${lightColor ? "light-left" : "dark-right"}" id="${data.id}">
             <div class="content-container">
                 <h2>${data.name}</h2>
 
-                ${extraLinksHTML}
+                ${extraLinksHtml}
 
                 <a href="${data.link}" class="website-link" target="_blank">
                     ${data.link}
@@ -51,3 +52,6 @@ function addProject(data) {
 
     projectsContainer.appendChild(article);
 }
+
+projects.forEach(addProject);
+new ScrollPrompt();

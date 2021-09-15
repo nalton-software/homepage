@@ -1,9 +1,11 @@
 /* GENERAL CSS */
 
 :root {
-    --color-bg: #0f0f0f;
+    --color-bg: #ffffff;
+    --dark-color: #333333;
+    --light-color: #eeeeee;
     --color-text: #eeeeee;
-    --color-primary: #27a320;
+    --primary-color: #27a320;
 }
 
 *,
@@ -20,6 +22,14 @@ body {
     font-family: "Open Sans", sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
+}
+
+html {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+html::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 h1 {
@@ -54,10 +64,13 @@ p {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    /* background: url("./assets/logo.svg") no-repeat center; */
-    /* background-size: auto 100%; */
-    background: rgb(11,11,11);
-    background: radial-gradient(circle, rgba(6,6,6,1) 30%, rgba(20,20,20,1) 100%);
+    background: url("./assets/logo.svg") no-repeat center;
+    background-color: var(--primary-color);
+    background-size: auto 100%;
+}
+
+.title h1, .title h2 {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .title h1 {
@@ -66,12 +79,13 @@ p {
 
 .title h2 {
     font-size: 4vw;
+    -webkit-text-stroke: 1px solid black;
 }
 
 a:link,
 a:visited,
 a:active {
-    color: var(--color-primary);
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -79,29 +93,41 @@ a:hover {
     text-decoration: underline;
 }
 
-.project h2 {
-    margin-top: 0;
-    margin-left: 0;
-}
-
 .project {
     display: flex;
     justify-content: space-between;
-    height: fit-content;
+    height: 70vh;
+    padding: 20px;
 }
 
-.project.right {
-    margin-left: 4vw;
+.project * {
+    margin-left: 0px;
 }
 
-.project.left {
+.project.light-left {
+    @apply project;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+.project.dark-right {
+    @apply project;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+
     flex-direction: row-reverse;
-    margin-right: 4vw;
 }
 
-.project .content-container {
+.project.light-left .content-container {
     margin-top: 4vw;
     margin-bottom: 4vw;
+    align-items: left;
+}
+
+.project.dark-right .content-container {
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+    text-align: left;
 }
 
 .project .description {
@@ -109,14 +135,14 @@ a:hover {
 }
 
 .project img {
-    width: 55%;
+    height: auto; 
 }
 
-.project.right img {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 20% 100%)
+.project.light-left img {
+    margin-left: 50px;
 }
 
-.project.left img {
-    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+.project.dark-right img {
+    margin-right: 50px;
 }
 

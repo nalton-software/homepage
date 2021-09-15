@@ -1,0 +1,32 @@
+class ScrollPrompt {
+    size = 50;
+    imageSource = "favicon.png";
+    fadeOutScrollAmount = 150; // fade out completely at this scroll amount
+
+    constructor() {
+        const html = `
+            <img src="${this.imageSource}" style="
+                width: ${this.size}px;
+                height: ${this.size}px;
+                position: fixed;
+                margin-auto;
+                left: 50vw;
+                transform: translate(-50%,-50%);
+                bottom: 10px;
+            ">
+        `;
+        this.imageElement = htmlToElement(html);
+        document.body.appendChild(this.imageElement);
+
+        document.addEventListener("scroll", e => {
+            this.imageElement.style.opacity =
+                Math.max(0, 1 - (window.scrollY / this.fadeOutScrollAmount));
+        });
+    }
+
+    htmlToElement(html) {
+        const template = document.createElement("template");
+        template.innerHTML = html.trim();
+        return template.content.firstChild;
+    }
+}
