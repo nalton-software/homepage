@@ -1,6 +1,6 @@
 class ScrollPrompt {
     size = 50;
-    imageSource = "favicon.png";
+    imageSource = "assets/downarrow.svg";
     fadeOutScrollAmount = 150; // fade out completely at this scroll amount
 
     constructor() {
@@ -17,6 +17,10 @@ class ScrollPrompt {
         `;
         this.imageElement = htmlToElement(html);
         document.body.appendChild(this.imageElement);
+
+        this.imageElement.addEventListener('click', e => {
+            window.scrollBy(0, window.innerHeight - window.scrollY);
+        });
 
         document.addEventListener("scroll", e => {
             this.imageElement.style.opacity =
